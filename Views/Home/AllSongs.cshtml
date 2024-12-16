@@ -1,0 +1,27 @@
+@model List<Song>
+<h1>All Songs in Songfy </h1>
+<table class="table table-striped">
+<tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Genre</th>
+    <th>Actions</th>
+</tr>
+@foreach (Song s in Model)
+{
+    <tr>
+        <td>@s.Title</td>
+        <td>@s.Year</td>
+        <td>@s.Genre</td>
+        <td><form asp-action="Destroy" asp-controller="Home" method="Post" asp-route-SongId="@s.SongId" >
+            <input type="submit" value="Delete" class="btn btn-danger">
+
+        </form>
+            !
+            <a href="/songs/@s.SongId/edit" class="btn btn-info">Edit</a>            
+            
+            
+        </td>
+    </tr>
+}
+</table>
